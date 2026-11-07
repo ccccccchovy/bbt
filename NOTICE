@@ -1,0 +1,48 @@
+BBT
+Copyright 2026 BBT contributors
+
+This product is licensed under the Apache License, Version 2.0.
+See the LICENSE file at the repository root for the full text.
+SPDX-License-Identifier: Apache-2.0
+
+--------------------------------------------------------------------
+Third-party components (upstream copyright and licenses retained)
+--------------------------------------------------------------------
+
+This NOTICE does not replace or swallow upstream licenses. Vendor trees
+keep their own LICENSE / copyright files. Root Apache-2.0 covers BBT
+project code only.
+
+1) FireRedASR
+   Location: third_party/FireRedASR
+   License: Apache-2.0 (see third_party/FireRedASR/LICENSE)
+   Upstream: FireRedTeam / FireRedASR
+   Notes: Runtime libraries may ship with the portable pack (ADR-024 /
+          ASR-OFFLINE-PACK). Weights are separate and must pass pack_ready.
+
+2) Interception
+   Location: third_party/interception (consent page + layout README in Git;
+             installer binaries are not committed)
+   Upstream: https://github.com/oblitum/Interception
+   Notes: Product injection path. Informed consent + UAC required.
+          Silent / automatic driver install is forbidden（禁止静默装驱动）.
+          Unzipping the portable pack does NOT install the driver.
+
+3) PyTorch / torchaudio (optional CUDA path)
+   Typical landing: optional/cuda/site-packages (not in Git by default)
+   License: BSD-style (see upstream LICENSE / NOTICE in the wheel)
+   Notes: Optional multi-GB CUDA component（可选数 GB）. Product install
+          uses the sealed zip or public-wheels HTTP+sha path — 禁止事后 pip
+          as the sole product install method. Installing CUDA does not
+          imply L1 / Ultra ready. NVIDIA driver ≥551 is separate and
+          informed.
+
+Additional acknowledgements (non-exhaustive): ONNX Runtime, llama.cpp /
+related GGUF tooling, Silero VAD, and other dependencies declared in
+requirements*.txt retain their upstream licenses.
+
+For the open-source delivery surface (source repo + Release portable zip;
+MSI optional/non-default), see:
+  docs/DOC-OSS-GITHUB-开源GitHub发布.md
+  docs/OSS-GITHUB-CORE-开源GitHub实现.md
+  docs/OSS-GITHUB-R1-验收收口.md
